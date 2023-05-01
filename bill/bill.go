@@ -1,6 +1,9 @@
 package bill
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type Bill struct {
 	Name  string
@@ -14,8 +17,16 @@ func SetBill() Bill {
 	}
 }
 
-//change or format a struct object property value
+// change or format a struct object property value
 func (b Bill) GetBill() Bill {
 	b.Name = strings.ToUpper(b.Name)
 	return b
+}
+
+func (b Bill) Format() string {
+	var fs string
+	for _, v := range b.Items {
+		fs += fmt.Sprintf("%v has %v \n", b.Name, v)
+	}
+	return fs
 }

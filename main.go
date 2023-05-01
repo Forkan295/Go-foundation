@@ -14,7 +14,7 @@ func main() {
 		Name:  "wowow",
 		Items: []string{"low", "USD"},
 	}
-	fmt.Println(myBill.GetBill(), newBill.GetBill())
+	fmt.Println(myBill.GetBill(), newBill.GetBill(), newBill.Format())
 }
 
 func replace(fullStr string, replaceableStr string, newStr string) string {
@@ -26,6 +26,7 @@ func getInit(n string) interface{} {
 	if n == "" {
 		return false
 	}
+
 	s := strings.ToUpper(n)
 	sepArr := strings.Split(s, " ")
 	fst := sepArr[0][0:1]
