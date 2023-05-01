@@ -10,7 +10,7 @@ type Bill struct {
 func SetBill() Bill {
 	return Bill{
 		Name:  "hell",
-		Items: []string{"sdf", "asdf"},
+		Items: []string{"sdf", "asdfs"},
 	}
 }
 
