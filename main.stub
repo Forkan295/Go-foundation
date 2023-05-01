@@ -1,0 +1,74 @@
+package main
+
+import "fmt"
+import (
+    "net/http"
+    "github.com/gin-gonic/gin"
+)
+
+func main()  {
+
+	// var name  string
+	// var age  int
+	// var calculatedAge  int
+	// // fmt.Println(hello("Hello"))
+	// fmt.Println("Enter name")
+    // fmt.Scanf("%s",&name)
+	// fmt.Println("Enter age")
+    // fmt.Scanf("%d",&age)
+    
+    // calculatedAge = calculateAge(age)
+	// fmt.Println("your age after 10 dacat",calculatedAge)
+
+    var s1, s2, s3 string
+    // fmt.Print("Enter a string: ")
+    // fmt.Scan( &s1)
+    // fmt.Scan( &s2)
+    // fmt.Scan( &s3)
+    
+    fmt.Print("Enter another string: ")
+    fmt.Scanf("%s", &s1)
+    fmt.Print("Enter another string: ")
+    fmt.Scan( &s2)
+    fmt.Print("Enter another string: ")
+    fmt.Scan(&s3)
+    fmt.Printf("You %v, entered: %v ----- %v ", s1, s2, s3)
+   
+}
+
+func calculateAge(age int) int {
+    
+    return age * 10
+}
+
+type album struct {
+    ID     string  `json:"id"`
+    Title  string  `json:"title"`
+    Artist string  `json:"artist"`
+    Price  float64 `json:"price"`
+}
+
+func getAlbums (c *gin.Context){
+    var albums = []album{
+        {ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
+        {ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
+        {ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
+    }
+
+    c.IndentedJSON(http.StatusOK, albums)
+}
+
+func hello(name string) string {
+
+    // Return a greeting that embeds the name in a message.
+    message := fmt.Sprintf("Hi, %v. Welcome!", name)
+    return message
+}
+
+func testAPi(){
+    router := gin.Default()
+    
+    router.GET("/albums", getAlbums)
+
+    router.Run("localhost:8450")
+}
