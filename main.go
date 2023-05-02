@@ -14,7 +14,8 @@ func main() {
 		Name:  "wowow",
 		Items: []string{"low", "USD"},
 	}
-	fmt.Println(myBill.GetBill(), newBill.GetBill(), newBill.Format())
+	updatedNB := bill.SetBill().UpdateName("new Name").Format()
+	fmt.Println(myBill.GetBill(), newBill.GetBill(), newBill.Format(), updatedNB)
 }
 
 func replace(fullStr string, replaceableStr string, newStr string) string {

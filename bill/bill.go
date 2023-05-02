@@ -30,3 +30,9 @@ func (b Bill) Format() string {
 	}
 	return fs
 }
+
+func (b Bill) UpdateName(name string) Bill {
+	b.Name = name
+	return b
+
+}
