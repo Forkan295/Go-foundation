@@ -1,13 +1,14 @@
 package main
 
-import (
-	"fmt"
-)
+import printChannel "test-project/Practice"
+
+var myChannel chan string      // Exported channel variable
+var anotherChannel chan string // Exported channel variable
 
 func main() {
-	myChannel := make(chan string)
+	myChannel = make(chan string)
 	//time.Sleep(time.Second)
-	anotherChannel := make(chan string)
+	anotherChannel = make(chan string)
 
 	go func() {
 		myChannel <- "mychanal"
@@ -17,10 +18,6 @@ func main() {
 		anotherChannel <- "anotherchanal"
 	}()
 
-	select {
-	case printmyChannel := <-myChannel:
-		fmt.Println(printmyChannel)
-	case printanotherChannel := <-anotherChannel:
-		fmt.Println(printanotherChannel)
-	}
+	printChannel.PrintChannel(myChannel, anotherChannel)
+
 }
